@@ -1,14 +1,39 @@
-group 'sandbox-spring'
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.5
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+ext {
+
+    springBootVersion = "latest.release"
+    springVersion = "latest.release"
+
+    springLibs = [
+            "org.springframework:spring-core:$springVersion",
+            "org.springframework:spring-context-support:$springVersion",
+    ]
+
+    springBootLibs = [
+            "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    ]
+}
+
+allprojects {
+    group = 'sandbox-spring'
+    version = '1.0-SNAPSHOT'
+    description = 'Spring sandbox'
+
+    apply plugin: 'java'
+}
+
+subprojects {
+
+    dependencies {
+        compile springLibs
+    }
+
+    compileJava {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+
 }
