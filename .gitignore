@@ -1,0 +1,16 @@
+.*
+*.iml
+target
+bin
+classes
+out
+build
+generated-sources
+*.log
+gradle
+gradlew
+gradlew.bat
+gradle.properties
+init.gradle
+application.properties
+!.gitignore
