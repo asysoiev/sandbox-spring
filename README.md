@@ -1,2 +1,2 @@
 # sandbox-spring
-Contains spring examples
+Contains spring examples.
