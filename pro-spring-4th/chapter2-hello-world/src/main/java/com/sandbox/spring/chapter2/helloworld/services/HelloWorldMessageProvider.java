@@ -1,4 +1,4 @@
-package com.sandbox.spring.chapter2.helloworld.model;
+package com.sandbox.spring.chapter2.helloworld.services;
 
 /**
  * @author Andrii Sysoiev

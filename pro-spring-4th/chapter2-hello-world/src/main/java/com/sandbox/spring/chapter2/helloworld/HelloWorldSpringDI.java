@@ -1,6 +1,6 @@
 package com.sandbox.spring.chapter2.helloworld;
 
-import com.sandbox.spring.chapter2.helloworld.model.MessageRenderer;
+import com.sandbox.spring.chapter2.helloworld.services.MessageRenderer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
