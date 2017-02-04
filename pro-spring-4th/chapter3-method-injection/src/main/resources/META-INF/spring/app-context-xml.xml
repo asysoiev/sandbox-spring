@@ -4,6 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--Method lookup injection-->
     <bean id="helper" class="com.sandbox.spring.chapter3.methodinjection.lookup.MyHelper" scope="prototype"/>
 
     <bean id="abstractLookupBean" class="com.sandbox.spring.chapter3.methodinjection.lookup.AbstractLookupDemoBean">
@@ -15,4 +16,15 @@
             <ref bean="helper"/>
         </property>
     </bean>
+
+    <!--Method replacement-->
+    <bean id="methodReplacer" class="com.sandbox.spring.chapter3.methodinjection.replacement.FormatMessageReplacer"/>
+
+    <bean id="replacementTarget" class="com.sandbox.spring.chapter3.methodinjection.replacement.ReplacementTarget">
+        <replaced-method name="formatMessage" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+
+    <bean id="standardTarget" class="com.sandbox.spring.chapter3.methodinjection.replacement.ReplacementTarget"/>
 </beans>
