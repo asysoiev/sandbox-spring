@@ -1,22 +1,15 @@
-package com.sandbox.chapter3.spel.annotation;
+package com.sandbox.chapter3.spel.xml;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import com.sandbox.chapter3.spel.InjectSimpleSpel;
 
 /**
  * @author Andrii Sysoiev
  */
-@Service
-public class InjectSimpleSpel {
-    @Value("#{injectSimpleConfig.name}")
+public class InjectSimpleSpelXml implements InjectSimpleSpel {
     private String name;
-    @Value("#{injectSimpleConfig.age}")
     private int age;
-    @Value("#{injectSimpleConfig.height}")
     private float height;
-    @Value("#{injectSimpleConfig.programmer}")
     private boolean programmer;
-    @Value("#{injectSimpleConfig.ageInSeconds}")
     private Long ageInSeconds;
 
     public String getName() {
@@ -57,13 +50,5 @@ public class InjectSimpleSpel {
 
     public void setAgeInSeconds(Long ageInSeconds) {
         this.ageInSeconds = ageInSeconds;
-    }
-
-    public String toString() {
-        return "Name: " + name + "\n"
-                + "Age: " + age + "\n"
-                + "Age in Seconds: " + ageInSeconds + "\n"
-                + "Height: " + height + "\n"
-                + "Is Programmer?: " + programmer;
     }
 }

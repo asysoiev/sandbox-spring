@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="injectSimpleConfig" class="com.sandbox.chapter3.spel.xml.InjectSimpleConfig"/>
-    <bean id="injectSimpleSpel" class="com.sandbox.chapter3.spel.xml.InjectSimpleSpel"
+    <bean id="injectSimpleSpel" class="com.sandbox.chapter3.spel.xml.InjectSimpleSpelXml"
           p:name="#{injectSimpleConfig.name}"
           p:age="#{injectSimpleConfig.age}"
           p:height="#{injectSimpleConfig.height}"
