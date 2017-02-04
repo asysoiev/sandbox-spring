@@ -4,8 +4,12 @@ repositories {
 
 ext {
 
-    springBootVersion = "latest.release"
     springVersion = "latest.release"
+    springBootVersion = "latest.release"
+
+    junitVersion = "4.12"
+    mockitoVersion = "1.10.19"
+    powermockVersion = "1.6.4"
 
     springLibs = [
             "org.springframework:spring-core:$springVersion",
@@ -14,6 +18,14 @@ ext {
 
     springBootLibs = [
             "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    ]
+
+    testingLibs = [
+            "junit:junit:$junitVersion",
+            "org.mockito:mockito-core:$mockitoVersion",
+            "org.powermock:powermock-api-mockito:$powermockVersion",
+            "org.powermock:powermock-module-junit4:$powermockVersion",
+            "org.powermock:powermock-module-junit4-rule-agent:$powermockVersion"
     ]
 }
 
@@ -29,6 +41,8 @@ subprojects {
 
     dependencies {
         compile springLibs
+
+        testCompile testingLibs
     }
 
     compileJava {

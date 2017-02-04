@@ -1,3 +1,4 @@
 rootProject.name = 'pro-spring-4th'
 include 'chapter2-hello-world'
+include 'chapter3-ioc'
 
