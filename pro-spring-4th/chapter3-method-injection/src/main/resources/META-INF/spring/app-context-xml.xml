@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helper" class="com.sandbox.spring.chapter3.methodinjection.lookup.MyHelper" scope="prototype"/>
+
+    <bean id="abstractLookupBean" class="com.sandbox.spring.chapter3.methodinjection.lookup.AbstractLookupDemoBean">
+        <lookup-method name="getMyHelper" bean="helper"/>
+    </bean>
+
+    <bean id="standardLookupBean" class="com.sandbox.spring.chapter3.methodinjection.lookup.StandardLookupDemoBean">
+        <property name="myHelper">
+            <ref bean="helper"/>
+        </property>
+    </bean>
+</beans>
