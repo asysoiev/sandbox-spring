@@ -4,4 +4,5 @@ include 'chapter3-ioc'
 include 'chapter3-spel'
 include 'chapter3-method-injection'
 include 'chapter4-handle-bean-lifecycle'
+include 'chapter4-factory-bean'
 
