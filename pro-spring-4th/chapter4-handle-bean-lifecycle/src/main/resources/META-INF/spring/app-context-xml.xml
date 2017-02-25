@@ -1,0 +1,57 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="true">
+
+  <context:annotation-config/>
+
+  <!--By xml configuration-->
+  <bean id="simpleBeanWithInitMethod1"
+        class="com.sandbox.chapter4.lifecycle.model.XmlConfigurationHandler"
+        init-method="init"
+        destroy-method="destroy"
+        p:name="Chris Schaefer" p:age="32"/>
+
+  <bean id="simpleBeanWithInitMethod2"
+        class="com.sandbox.chapter4.lifecycle.model.XmlConfigurationHandler"
+        init-method="init"
+        destroy-method="destroy"
+        p:age="32"/>
+
+  <bean id="simpleBeanWithInitMethod3"
+        class="com.sandbox.chapter4.lifecycle.model.XmlConfigurationHandler"
+        init-method="init"
+        destroy-method="destroy"
+        p:name="Chris Schaefer"/>
+
+  <!--By Interface implementation-->
+  <bean id="simpleBeanWithInterface1"
+        class="com.sandbox.chapter4.lifecycle.model.InterfaceHandler"
+        p:name="Chris Schaefer" p:age="32"/>
+
+  <bean id="simpleBeanWithInterface2"
+        class="com.sandbox.chapter4.lifecycle.model.InterfaceHandler"
+        p:age="32"/>
+
+  <bean id="simpleBeanWithInterface3"
+        class="com.sandbox.chapter4.lifecycle.model.InterfaceHandler"
+        p:name="Chris Schaefer"/>
+
+  <!--By Annotation(JSR250)-->
+  <bean id="simpleBeanWithAnnotation1"
+        class="com.sandbox.chapter4.lifecycle.model.AnnotationHandler"
+        p:name="Chris Schaefer" p:age="32"/>
+
+  <bean id="simpleBeanWithAnnotation2"
+        class="com.sandbox.chapter4.lifecycle.model.AnnotationHandler"
+        p:age="32"/>
+
+  <bean id="simpleBeanWithAnnotation3"
+        class="com.sandbox.chapter4.lifecycle.model.AnnotationHandler"
+        p:name="Chris Schaefer"/>
+</beans>
