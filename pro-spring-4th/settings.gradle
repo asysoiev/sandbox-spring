@@ -8,4 +8,5 @@ include 'chapter4-factory-bean'
 include 'chapter4-property-editors'
 include 'chapter4-internationalization'
 include 'chapter4-events'
+include 'chapter4-resources'
 
