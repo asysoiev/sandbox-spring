@@ -10,4 +10,5 @@ include 'chapter4-internationalization'
 include 'chapter4-events'
 include 'chapter4-resources'
 include 'chapter4-configuration-by-java'
+include 'chapter4-profiles'
 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       profile="highschool">
+
+  <bean id="foodProviderService"
+        class="com.sandbox.chapter4.profiles.model.FoodProviderImpl">
+    <constructor-arg>
+      <list>
+        <ref bean="first"/>
+        <ref bean="secod"/>
+        <ref bean="third"/>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean id="first"
+        class="com.sandbox.chapter4.profiles.model.Food">
+    <constructor-arg>
+      <value>Coke</value>
+    </constructor-arg>
+  </bean>
+
+  <bean id="secod"
+        class="com.sandbox.chapter4.profiles.model.Food">
+    <constructor-arg>
+      <value>Hamburger</value>
+    </constructor-arg>
+  </bean>
+
+  <bean id="third"
+        class="com.sandbox.chapter4.profiles.model.Food">
+    <constructor-arg>
+      <value>French Fries</value>
+    </constructor-arg>
+  </bean>
+
+</beans>
