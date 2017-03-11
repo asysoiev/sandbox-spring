@@ -11,8 +11,10 @@ public class App {
         MessageWriter target = new MessageWriter();
 
         ProxyFactory pf = new ProxyFactory();
-//        pf.addAdvice(new MessageDecorator());
+        //order is important, or receive pos
         pf.addAdvice(new SimpleBeforeAdvice());
+        pf.addAdvice(new SimpleAfterAdvice());
+        pf.addAdvice(new MessageDecorator());
         pf.setTarget(target);
 
         MessageWriter proxy = (MessageWriter) pf.getProxy();
