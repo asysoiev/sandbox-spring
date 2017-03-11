@@ -11,7 +11,8 @@ public class App {
         MessageWriter target = new MessageWriter();
 
         ProxyFactory pf = new ProxyFactory();
-        pf.addAdvice(new MessageDecorator());
+//        pf.addAdvice(new MessageDecorator());
+        pf.addAdvice(new SimpleBeforeAdvice());
         pf.setTarget(target);
 
         MessageWriter proxy = (MessageWriter) pf.getProxy();
