@@ -22,6 +22,23 @@ public class App {
         target.writeMessage();
         System.out.println("");
         proxy.writeMessage();
+
+        System.out.println("ThrowAdvice simple");
+        ProxyFactory pfE = new ProxyFactory();
+        pfE.addAdvice(new SimpleThrowsAdvice());
+        pfE.setTarget(new ErrorBean());
+        ErrorBean errorBean = (ErrorBean) pfE.getProxy();
+        try {
+            errorBean.errorProneMethod();
+        } catch (Exception e) {
+
+        }
+
+        try {
+            errorBean.otherErrorProneMethod();
+        } catch (IllegalArgumentException e) {
+
+        }
     }
 
 }
