@@ -14,4 +14,5 @@ include 'chapter4-profiles'
 include 'chapter4-env-variables'
 include 'chapter4-configuration-by-jcr330'
 include 'chapter4-configuration-by-groovy'
+include 'chapter5-hello-AOP'
 
