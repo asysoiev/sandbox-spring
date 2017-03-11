@@ -17,4 +17,5 @@ include 'chapter4-configuration-by-groovy'
 include 'chapter5-hello-AOP'
 include 'chapter5-aop-secure-before'
 include 'chapter5-aop-check-after'
+include 'chapter5-aop-around'
 
