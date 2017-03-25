@@ -2,14 +2,19 @@ package com.sandbox.aop.pointcuts;
 
 import org.aopalliance.aop.Advice;
 import org.springframework.aop.Advisor;
+import org.springframework.aop.ClassFilter;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.ComposablePointcut;
 import org.springframework.aop.support.ControlFlowPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.JdkRegexpMethodPointcut;
 import org.springframework.aop.support.NameMatchMethodPointcut;
+import org.springframework.aop.support.StaticMethodMatcher;
 import org.springframework.aop.support.annotation.AnnotationMatchingPointcut;
+
+import java.lang.reflect.Method;
 
 /**
  * @author Andrii Sysoiev
@@ -107,6 +112,62 @@ public class App {
         beanOne.foo();
         System.out.println("Indirect call:");
         testFlow(beanOne);
+        //endregion
+
+        //region Composable Pointcut
+        System.out.println("Test compose advisor");
+        ComposeBean target = new ComposeBean();
+        ComposablePointcut composablePointcut = new ComposablePointcut(ClassFilter.TRUE, new StaticMethodMatcher() {
+            @Override
+            public boolean matches(Method method, Class<?> targetClass) {
+                return method.getName().startsWith("get");
+            }
+        });
+
+        pf = new ProxyFactory();
+        pf.setTarget(target);
+        pf.addAdvisor(new DefaultPointcutAdvisor(composablePointcut, new SimpleBeforeAdvice()));
+
+        System.out.println("Only getters");
+        ComposeBean composeBean = (ComposeBean) pf.getProxy();
+        composeBean.getName();
+        composeBean.setName("Andrii Sysoiev");
+        composeBean.getAge();
+
+        composablePointcut.union(new StaticMethodMatcher() {
+            @Override
+            public boolean matches(Method method, Class<?> targetClass) {
+                return method.getName().startsWith("set");
+            }
+        });
+
+        pf = new ProxyFactory();
+        pf.setTarget(target);
+        pf.addAdvisor(new DefaultPointcutAdvisor(composablePointcut, new SimpleBeforeAdvice()));
+
+        System.out.println("Getters and setters");
+        composeBean = (ComposeBean) pf.getProxy();
+        composeBean.getName();
+        composeBean.setName("Andrii Sysoiev");
+        composeBean.getAge();
+
+        composablePointcut.intersection(new StaticMethodMatcher() {
+            @Override
+            public boolean matches(Method method, Class<?> targetClass) {
+                return method.getName().equals("getAge");
+            }
+        });
+
+        pf = new ProxyFactory();
+        pf.setTarget(target);
+        pf.addAdvisor(new DefaultPointcutAdvisor(composablePointcut, new SimpleBeforeAdvice()));
+
+        System.out.println("Only getAge");
+        composeBean = (ComposeBean) pf.getProxy();
+        composeBean.getName();
+        composeBean.setName("Andrii Sysoiev");
+        composeBean.getAge();
+
         //endregion
     }
 
