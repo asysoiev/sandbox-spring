@@ -5,6 +5,7 @@ import org.springframework.aop.Advisor;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.support.ControlFlowPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.JdkRegexpMethodPointcut;
 import org.springframework.aop.support.NameMatchMethodPointcut;
@@ -93,6 +94,24 @@ public class App {
         abo.foo();
         abo.bar();
         //endregion
+
+        //region Control flow point cut
+        System.out.println("Test Control flow pointcut");
+        Pointcut flowPointCut = new ControlFlowPointcut(App.class, "testFlow");
+        advisor = new DefaultPointcutAdvisor(flowPointCut, new SimpleAdvice());
+        pf = new ProxyFactory();
+        pf.setTarget(new BeanOne());
+        pf.addAdvisor(advisor);
+        beanOne = (BeanOne) pf.getProxy();
+        System.out.println("Direct call:");
+        beanOne.foo();
+        System.out.println("Indirect call:");
+        testFlow(beanOne);
+        //endregion
+    }
+
+    private static void testFlow(BeanOne bean) {
+        bean.foo();
     }
 
 }
