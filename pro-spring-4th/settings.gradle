@@ -19,4 +19,5 @@ include 'chapter5-aop-secure-before'
 include 'chapter5-aop-check-after'
 include 'chapter5-aop-around'
 include 'chapter5-aop-pointcuts'
+include 'chapter5-aop-proxies'
 
