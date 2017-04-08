@@ -20,4 +20,5 @@ include 'chapter5-aop-check-after'
 include 'chapter5-aop-around'
 include 'chapter5-aop-pointcuts'
 include 'chapter5-aop-proxies'
+include 'chapter5-aop-ismodified'
 
