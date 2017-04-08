@@ -1,0 +1,35 @@
+configurations {
+    ajc
+    aspects
+    aspectCompile
+    compile{
+        extendsFrom aspects
+    }
+}
+
+dependencies {
+
+    //Dependencies required for aspect compilation
+    ajc "org.aspectj:aspectjtools:1.+"
+    aspects "org.springframework:spring-aspects:4.+"
+
+}
+compileJava {
+    sourceCompatibility="1.8"
+    targetCompatibility="1.8"
+
+    dependsOn configurations.ajc.getTaskDependencyFromProjectDependency(true, "compileJava")
+
+    doLast{
+        ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath)
+        ant.iajc(source:"1.8", target:"1.8", destDir:sourceSets.main.output.classesDir.absolutePath, maxmem:"512m", fork:"true",
+                aspectPath:configurations.aspects.asPath,
+                sourceRootCopyFilter:"**/.svn/*,**/*.java",classpath:configurations.compile.asPath){
+            sourceroots{
+                sourceSets.main.java.srcDirs.each{
+                    pathelement(location:it.absolutePath)
+                }
+            }
+        }
+    }
+}
