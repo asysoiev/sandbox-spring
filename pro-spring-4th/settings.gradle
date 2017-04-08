@@ -23,4 +23,5 @@ include 'chapter5-aop-proxies'
 include 'chapter5-aop-ismodified'
 include 'chapter5-aop-configurations'
 include 'chapter5-aop-namespace-configuration'
+include 'chapter5-aop-aspectj-style-annotations'
 

@@ -1,0 +1,4 @@
+dependencies {
+    compile group: 'org.aspectj', name: 'aspectjtools', version: '1.7.0'
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.7.0'
+}
