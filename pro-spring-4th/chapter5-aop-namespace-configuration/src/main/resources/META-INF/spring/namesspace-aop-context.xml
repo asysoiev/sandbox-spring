@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <aop:config>
+    <aop:pointcut id="fooExecution" expression="execution(* foo*(int)) and args(intValue) and bean(myDep*)"/>
+    <aop:aspect ref="advice">
+      <aop:before pointcut-ref="fooExecution"
+                  method="simpleBeforeAdvice"/>
+      <aop:around pointcut-ref="fooExecution"
+                  method="simpleAroundAdvice"/>
+    </aop:aspect>
+  </aop:config>
+
+  <bean id="advice" class="com.sandbox.aop.configurations.namespace.MyAdvice"/>
+
+  <bean id="myDep" class="com.sandbox.aop.configurations.namespace.MyDependency"/>
+
+  <bean id="myBean" class="com.sandbox.aop.configurations.namespace.MyBean">
+    <property name="dependency">
+      <ref bean="myDep"/>
+    </property>
+  </bean>
+
+</beans>
