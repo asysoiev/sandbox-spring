@@ -25,4 +25,5 @@ include 'chapter5-aop-configurations'
 include 'chapter5-aop-namespace-configuration'
 include 'chapter5-aop-aspectj-style-annotations'
 include 'chapter5-aop-aspectj'
+include 'chapter6-jdbc'
 
