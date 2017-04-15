@@ -1,6 +1,6 @@
-repositories {
-    mavenCentral()
-}
+//repositories {
+//    mavenCentral()
+//}
 
 ext {
 
@@ -35,6 +35,10 @@ allprojects {
     description = 'Spring sandbox'
 
     apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
 }
 
 subprojects {

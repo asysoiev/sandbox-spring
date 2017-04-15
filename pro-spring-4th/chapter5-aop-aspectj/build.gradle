@@ -20,16 +20,16 @@ compileJava {
 
     dependsOn configurations.ajc.getTaskDependencyFromProjectDependency(true, "compileJava")
 
-    doLast{
-        ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath)
-        ant.iajc(source:"1.8", target:"1.8", destDir:sourceSets.main.output.classesDir.absolutePath, maxmem:"512m", fork:"true",
-                aspectPath:configurations.aspects.asPath,
-                sourceRootCopyFilter:"**/.svn/*,**/*.java",classpath:configurations.compile.asPath){
-            sourceroots{
-                sourceSets.main.java.srcDirs.each{
-                    pathelement(location:it.absolutePath)
-                }
-            }
-        }
-    }
+//    doLast{
+//        ant.taskdef( resource:"org/aspectj/tools/ant/taskdefs/aspectjTaskdefs.properties", classpath: configurations.ajc.asPath)
+//        ant.iajc(source:"1.8", target:"1.8", destDir:sourceSets.main.output.classesDir.absolutePath, maxmem:"512m", fork:"true",
+//                aspectPath:configurations.aspects.asPath,
+//                sourceRootCopyFilter:"**/.svn/*,**/*.java",classpath:configurations.compile.asPath){
+//            sourceroots{
+//                sourceSets.main.java.srcDirs.each{
+//                    pathelement(location:it.absolutePath)
+//                }
+//            }
+//        }
+//    }
 }
