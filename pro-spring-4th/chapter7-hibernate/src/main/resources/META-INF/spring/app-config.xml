@@ -15,7 +15,8 @@
  http://www.springframework.org/schema/util
  http://www.springframework.org/schema/util/spring-util.xsd
  http://www.springframework.org/schema/context
- http://www.springframework.org/schema/context/spring-context.xsd">
+ http://www.springframework.org/schema/context/spring-context.xsd"
+       profile="hibernate">
 
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:/sql/schema.sql"/>

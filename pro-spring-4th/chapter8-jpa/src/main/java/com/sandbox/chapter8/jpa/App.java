@@ -1,9 +1,11 @@
-package com.sandbox.chapter7.hibernate;
+package com.sandbox.chapter8.jpa;
 
 import com.sandbox.chapter7.hibernate.model.Contact;
 import com.sandbox.chapter7.hibernate.model.ContactTelDetail;
 import com.sandbox.chapter7.hibernate.model.Hobby;
 import com.sandbox.chapter7.hibernate.service.ContactDao;
+import com.sandbox.chapter8.jpa.model.ContactSummary;
+import com.sandbox.chapter8.jpa.services.ContactSummaryService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Date;
@@ -11,14 +13,15 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by andrii on 22.04.17.
+ * Created by andrii on 29.04.17.
  */
 public class App {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.getEnvironment().setActiveProfiles("hibernate");
-        ctx.load("classpath:META-INF/spring/app-config.xml");
+        //-Dspring.profiles.active=spring-jdbc
+        ctx.getEnvironment().setActiveProfiles("jpa");
+        ctx.load("classpath:META-INF/spring/*.xml");
         ctx.refresh();
 
 
@@ -33,6 +36,8 @@ public class App {
         newContact.addContactTelDetail(contactTelDetail);
         contactTelDetail = new ContactTelDetail("Mobile", "2222222222");
         newContact.addContactTelDetail(contactTelDetail);
+        System.out.println("");
+        System.out.println("Insert contact: " + newContact);
         contactDao.save(newContact);
         listContacts(contactDao.findAllWithDetail());
 
@@ -60,6 +65,13 @@ public class App {
         contactDao.save(contact);
 
         listContacts(contactDao.findAllWithDetail());
+
+        System.out.println("Test ContactSummaryUntype:");
+        ContactSummaryService contactSummaryServiceImpl = ctx.getBean("contactSummaryUntype", ContactSummaryService.class);
+        for (ContactSummary summary : contactSummaryServiceImpl.findAll()) {
+            System.out.println(summary);
+        }
+
     }
 
     private static void listContacts(List<Contact> contacts) {

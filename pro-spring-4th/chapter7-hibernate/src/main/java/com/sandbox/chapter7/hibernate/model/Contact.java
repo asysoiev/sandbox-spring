@@ -14,6 +14,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "contact")
 @NamedQueries({
+        @NamedQuery(name = "Contact.findAll",
+                query = "select c " +
+                        "from Contact c "),
         @NamedQuery(name = "Contact.findById",
                 query = "select distinct c " +
                         "from Contact c " +
@@ -25,6 +28,7 @@ import static javax.persistence.GenerationType.IDENTITY;
                         "left join fetch c.contactTelDetails t " +
                         "left join fetch c.hobbies h")
 })
+@SqlResultSetMapping(name = "contactResult", entities = @EntityResult(entityClass = Contact.class))
 public class Contact implements Serializable {
     private Long id;
     private int version;
