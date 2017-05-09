@@ -10,4 +10,6 @@ dependencies {
 
     compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
     compile group: 'org.jadira.usertype', name: 'usertype.extended', version: '5.0.0.GA'
+
+    compile group: 'org.hibernate', name: 'hibernate-envers', version: '5.0.1.Final'
 }

@@ -13,4 +13,6 @@ public interface ContactAuditService {
     ContactAudit findById(Long id);
 
     void save(ContactAudit value);
+
+    ContactAudit findByAuditVersionId(Long id, int versionId);
 }

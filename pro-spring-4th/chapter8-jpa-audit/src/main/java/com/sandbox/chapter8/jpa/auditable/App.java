@@ -21,6 +21,7 @@ public class App {
                 "contactAuditService", ContactAuditService.class);
         List<ContactAudit> contacts = contactService.findAll();
         listContacts(contacts);
+
         System.out.println("Add new contact");
         ContactAudit contact = new ContactAudit();
         contact.setFirstName("Michael");
@@ -33,11 +34,21 @@ public class App {
         System.out.println("");
         System.out.println("Contact with id 1:" + contact);
         System.out.println("");
+
         System.out.println("Update contact");
         contact.setFirstName("Tom");
         contactService.save(contact);
         contacts = contactService.findAll();
         listContacts(contacts);
+
+        ContactAudit oldContact = contactService.findByAuditVersionId(1l, 1);
+        System.out.println("");
+        System.out.println("Old Contact with id 1 and rev 1:" + oldContact);
+        System.out.println("");
+        oldContact = contactService.findByAuditVersionId(1l, 2);
+        System.out.println("");
+        System.out.println("Old Contact with id 1 and rev 2:" + oldContact);
+        System.out.println("");
     }
 
     private static void listContacts(List<ContactAudit> contacts) {

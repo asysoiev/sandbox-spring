@@ -1,6 +1,7 @@
 package com.sandbox.chapter8.jpa.auditable.model;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.envers.Audited;
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Auditable;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 /**
  * Created by andrii on 09.05.17.
  */
+@Audited
 @Entity
 @Table(name = "contact_audit")
 public class ContactAudit implements Auditable<String, Long>, Serializable {
