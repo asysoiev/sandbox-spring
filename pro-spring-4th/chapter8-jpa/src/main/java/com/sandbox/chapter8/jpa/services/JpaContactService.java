@@ -1,6 +1,7 @@
 package com.sandbox.chapter8.jpa.services;
 
 import com.sandbox.chapter7.hibernate.model.Contact;
+import com.sandbox.chapter7.hibernate.model.Contact_;
 import com.sandbox.chapter7.hibernate.service.ContactDao;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 /**
@@ -33,6 +35,29 @@ public class JpaContactService implements ContactDao {
     @Override
     public List<Contact> findAllWithDetail() {
         return entityManager.createNamedQuery("Contact.findAllWithDetail").getResultList();
+    }
+
+    @Override
+    public List<Contact> findByCriteriaQuery(String firstName, String lastName) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Contact> criteriaQuery = cb.createQuery(Contact.class);
+        Root<Contact> contactRoot = criteriaQuery.from(Contact.class);
+        contactRoot.fetch(Contact_.contactTelDetails, JoinType.LEFT);
+        contactRoot.fetch(Contact_.hobbies, JoinType.LEFT);
+        criteriaQuery.select(contactRoot).distinct(true);
+        Predicate criteria = cb.conjunction();
+        if (firstName != null) {
+            Predicate p = cb.equal(contactRoot.get(Contact_.firstName),
+                    firstName);
+            criteria = cb.and(criteria, p);
+        }
+        if (lastName != null) {
+            Predicate p = cb.equal(contactRoot.get(Contact_.lastName),
+                    lastName);
+            criteria = cb.and(criteria, p);
+        }
+        criteriaQuery.where(criteria);
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
     @Override

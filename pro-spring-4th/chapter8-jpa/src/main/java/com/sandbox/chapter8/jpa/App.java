@@ -72,6 +72,9 @@ public class App {
             System.out.println(summary);
         }
 
+        System.out.println("Test Criteria search");
+        List<Contact> contacts = contactDao.findByCriteriaQuery("John", "Smith");
+        listContacts(contacts);
     }
 
     private static void listContacts(List<Contact> contacts) {

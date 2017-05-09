@@ -8,11 +8,14 @@ import java.util.List;
  * Created by andrii on 22.04.17.
  */
 public interface ContactDao {
+
+    Contact findById(Long id);
+
     List<Contact> findAll();
 
     List<Contact> findAllWithDetail();
 
-    Contact findById(Long id);
+    List<Contact> findByCriteriaQuery(String firstName, String lastName);
 
     Contact save(Contact contact);
 

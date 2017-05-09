@@ -4,6 +4,7 @@ import com.sandbox.chapter7.hibernate.model.Contact;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,6 +37,11 @@ public class ContactDaoImpl implements ContactDao {
     public List<Contact> findAllWithDetail() {
         return sessionFactory.getCurrentSession()
                 .getNamedQuery("Contact.findAllWithDetail").list();
+    }
+
+    @Override
+    public List<Contact> findByCriteriaQuery(String firstName, String lastName) {
+        throw new NotImplementedException();
     }
 
     @Override
