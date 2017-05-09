@@ -28,4 +28,5 @@ include 'chapter5-aop-aspectj'
 include 'chapter6-jdbc'
 include 'chapter7-hibernate'
 include 'chapter8-jpa'
+include 'chapter8-jpa-audit'
 
