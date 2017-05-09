@@ -75,6 +75,10 @@ public class App {
         System.out.println("Test Criteria search");
         List<Contact> contacts = contactDao.findByCriteriaQuery("John", "Smith");
         listContacts(contacts);
+
+        System.out.println("Test Spring Data JPA Repository");
+        contacts = contactDao.findByFirstNameAndLastName("John", "Smith");
+        listContacts(contacts);
     }
 
     private static void listContacts(List<Contact> contacts) {

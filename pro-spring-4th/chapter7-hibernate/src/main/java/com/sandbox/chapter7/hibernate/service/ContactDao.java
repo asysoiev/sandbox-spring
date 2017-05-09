@@ -21,4 +21,5 @@ public interface ContactDao {
 
     void delete(Contact contact);
 
+    List<Contact> findByFirstNameAndLastName(String firstName, String lastName);
 }

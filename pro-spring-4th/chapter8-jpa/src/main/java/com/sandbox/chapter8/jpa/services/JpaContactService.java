@@ -1,16 +1,17 @@
 package com.sandbox.chapter8.jpa.services;
 
+import com.google.common.collect.Lists;
 import com.sandbox.chapter7.hibernate.model.Contact;
 import com.sandbox.chapter7.hibernate.model.Contact_;
 import com.sandbox.chapter7.hibernate.service.ContactDao;
+import com.sandbox.chapter8.jpa.repositories.ContactRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.List;
 
@@ -24,12 +25,15 @@ public class JpaContactService implements ContactDao {
 
     @PersistenceContext
     private EntityManager entityManager;
+    @Autowired
+    private ContactRepository contactRepository;
 
     @Transactional(readOnly = true)
     @Override
     public List<Contact> findAll() {
-        Query query = entityManager.createNativeQuery("select id, first_name, last_name, birth_date, version from contact where id=:id", "contactResult");
-        return query.getResultList();
+//        Query query = entityManager.createNativeQuery("select id, first_name, last_name, birth_date, version from contact where id=:id", "contactResult");
+//        return query.getResultList();
+        return Lists.newArrayList(contactRepository.findAll());
     }
 
     @Override
@@ -60,11 +64,13 @@ public class JpaContactService implements ContactDao {
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Contact findById(Long id) {
-        TypedQuery<Contact> query = entityManager.createNamedQuery("Contact.findById", Contact.class);
-        query.setParameter("id", id);
-        return query.getSingleResult();
+//        TypedQuery<Contact> query = entityManager.createNamedQuery("Contact.findById", Contact.class);
+//        query.setParameter("id", id);
+//        return query.getSingleResult();
+        return contactRepository.findOne(id);
     }
 
     @Override
@@ -81,5 +87,11 @@ public class JpaContactService implements ContactDao {
     public void delete(Contact contact) {
         Contact mergedContact = entityManager.merge(contact);
         entityManager.remove(mergedContact);
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Contact> findByFirstNameAndLastName(String firstName, String lastName) {
+        return contactRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 }

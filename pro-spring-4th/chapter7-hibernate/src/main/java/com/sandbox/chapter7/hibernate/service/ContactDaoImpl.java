@@ -62,4 +62,9 @@ public class ContactDaoImpl implements ContactDao {
     public void delete(Contact contact) {
         sessionFactory.getCurrentSession().delete(contact);
     }
+
+    @Override
+    public List<Contact> findByFirstNameAndLastName(String firstName, String lastName) {
+        throw new NotImplementedException();
+    }
 }
