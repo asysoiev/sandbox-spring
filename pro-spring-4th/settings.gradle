@@ -30,4 +30,5 @@ include 'chapter7-hibernate'
 include 'chapter8-jpa'
 include 'chapter8-jpa-audit'
 include 'chapter9-transactions'
+include 'chapter9-transactions-jta'
 
