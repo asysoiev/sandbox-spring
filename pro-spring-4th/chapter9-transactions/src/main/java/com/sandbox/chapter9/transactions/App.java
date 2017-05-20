@@ -14,7 +14,8 @@ public class App {
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
 //        ctx.getEnvironment().setActiveProfiles("annotation");
-        ctx.getEnvironment().setActiveProfiles("xml");
+//        ctx.getEnvironment().setActiveProfiles("xml");
+        ctx.getEnvironment().setActiveProfiles("programmatic");
         ctx.load("classpath:META-INF/spring/*-app-context.xml");
         ctx.refresh();
         ContactService contactService = ctx.getBean("contactService", ContactService.class);
