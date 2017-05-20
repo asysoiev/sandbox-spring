@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * @author Andrii Sysoiev
  */
-public interface ContactRepository extends CrudRepository<Long, Contact> {
+public interface ContactRepository extends CrudRepository<Contact, Long> {
 }
