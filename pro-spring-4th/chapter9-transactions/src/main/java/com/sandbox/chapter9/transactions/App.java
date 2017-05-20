@@ -25,6 +25,7 @@ public class App {
         contact.setFirstName("Peter");
         contactService.save(contact);
         System.out.println("Contact saved successfully: " + contact);
+        System.out.println("Contact count: " + contactService.countAll());
     }
 
 }

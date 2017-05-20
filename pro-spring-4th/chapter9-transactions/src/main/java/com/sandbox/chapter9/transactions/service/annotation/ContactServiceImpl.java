@@ -6,6 +6,7 @@ import com.sandbox.chapter9.transactions.repository.ContactRepository;
 import com.sandbox.chapter9.transactions.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -37,8 +38,9 @@ public class ContactServiceImpl implements ContactService {
         return contactRepository.save(contact);
     }
 
+    @Transactional(propagation = Propagation.NEVER)
     @Override
     public long countAll() {
-        return 0;
+        return contactRepository.countAllContacts();
     }
 }
