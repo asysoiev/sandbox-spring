@@ -32,4 +32,5 @@ include 'chapter8-jpa-audit'
 include 'chapter9-transactions'
 include 'chapter9-transactions-jta'
 include 'chapter10-converters'
+include 'chapter10-validation'
 
