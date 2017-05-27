@@ -1,11 +1,14 @@
 package com.sandbox.chapter10.jcr349.model;
 
+import com.sandbox.chapter10.jcr349.services.CheckIndividualCustomer;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  * @author Andrii Sysoiev
  */
+@CheckIndividualCustomer
 public class Customer {
 
     @NotNull

@@ -1,6 +1,7 @@
 package com.sandbox.chapter10.jcr349;
 
 import com.sandbox.chapter10.jcr349.model.Customer;
+import com.sandbox.chapter10.jcr349.model.CustomerType;
 import com.sandbox.chapter10.jcr349.services.BeanValidationService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -24,6 +25,12 @@ public class App {
         customer.setFirstName("C");
         customer.setLastName("Schaefer");
         customer.setCustomerType(null);
+        customer.setGender(null);
+        validateCustomer(customer, myBeanValidationService);
+
+        customer.setFirstName("Chris");
+        customer.setLastName("Schaefer");
+        customer.setCustomerType(CustomerType.INDIVIDUAL);
         customer.setGender(null);
         validateCustomer(customer, myBeanValidationService);
     }
