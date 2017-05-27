@@ -12,8 +12,9 @@
  http://www.springframework.org/schema/util/spring-util.xsd"
        profile="property-editor">
 
+  <import resource="data.xml"/>
+
   <context:annotation-config/>
-  <context:property-placeholder location="classpath:application.properties"/>
 
   <bean id="customEditorConfigurer"
         class="org.springframework.beans.factory.config.CustomEditorConfigurer"
@@ -24,17 +25,5 @@
       <constructor-arg value="${date.format.pattern}"/>
     </bean>
   </util:list>
-
-  <bean id="chris" class="com.sandbox.chapter10.converters.model.Contact"
-        p:firstName="Chris"
-        p:lastName="Schaefer"
-        p:birthDate="1981-05-03"
-        p:personalSite="http://www.dtzq.com"/>
-
-  <bean id="myContact" class="com.sandbox.chapter10.converters.model.Contact"
-        p:firstName="${myContact.firstName}"
-        p:lastName="${myContact.lastName}"
-        p:birthDate="${myContact.birthDate}"
-        p:personalSite="${myContact.personalSite}"/>
 
 </beans>
