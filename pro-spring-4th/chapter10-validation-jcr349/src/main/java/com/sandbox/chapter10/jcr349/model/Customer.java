@@ -1,14 +1,13 @@
 package com.sandbox.chapter10.jcr349.model;
 
-import com.sandbox.chapter10.jcr349.services.CheckIndividualCustomer;
-
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  * @author Andrii Sysoiev
  */
-@CheckIndividualCustomer
+//@CheckIndividualCustomer
 public class Customer {
 
     @NotNull
@@ -53,5 +52,16 @@ public class Customer {
 
     public boolean isIndividualCustomer() {
         return this.customerType.equals(CustomerType.INDIVIDUAL);
+    }
+
+    @AssertTrue(message = "ERROR! Individual customer should have gender and last name defined")
+    public boolean isValidIndividualCustomer() {
+        boolean result = true;
+        if (getCustomerType() != null &&
+                (this.customerType.equals(CustomerType.INDIVIDUAL) && (gender == null ||
+                        lastName == null))) {
+            result = false;
+        }
+        return result;
     }
 }
