@@ -35,4 +35,5 @@ include 'chapter10-converters'
 include 'chapter10-validation'
 include 'chapter10-validation-jcr349'
 include 'chapter11-schedule'
+include 'chapter12-remote'
 
