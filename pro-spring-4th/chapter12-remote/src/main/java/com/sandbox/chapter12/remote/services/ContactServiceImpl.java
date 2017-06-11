@@ -1,8 +1,8 @@
-package com.sandbox.chapter11.remote.services;
+package com.sandbox.chapter12.remote.services;
 
 import com.google.common.collect.Lists;
-import com.sandbox.chapter11.remote.models.Contact;
-import com.sandbox.chapter11.remote.repositories.ContactRepository;
+import com.sandbox.chapter12.remote.models.Contact;
+import com.sandbox.chapter12.remote.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;

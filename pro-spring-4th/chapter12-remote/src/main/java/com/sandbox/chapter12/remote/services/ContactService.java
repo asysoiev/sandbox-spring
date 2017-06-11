@@ -1,6 +1,6 @@
-package com.sandbox.chapter11.remote.services;
+package com.sandbox.chapter12.remote.services;
 
-import com.sandbox.chapter11.remote.models.Contact;
+import com.sandbox.chapter12.remote.models.Contact;
 
 import java.util.List;
 

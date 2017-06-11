@@ -1,4 +1,4 @@
-package com.sandbox.chapter11.remote.models;
+package com.sandbox.chapter12.remote.models;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;

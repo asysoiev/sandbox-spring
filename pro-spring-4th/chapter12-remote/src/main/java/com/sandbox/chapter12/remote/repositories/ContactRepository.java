@@ -1,6 +1,6 @@
-package com.sandbox.chapter11.remote.repositories;
+package com.sandbox.chapter12.remote.repositories;
 
-import com.sandbox.chapter11.remote.models.Contact;
+import com.sandbox.chapter12.remote.models.Contact;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -29,7 +29,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <property name="packagesToScan" value="com.sandbox.chapter11.remote.models"/>
+        <property name="packagesToScan" value="com.sandbox.chapter12.remote.models"/>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
@@ -41,7 +41,7 @@
         </property>
     </bean>
     <context:annotation-config/>
-    <jpa:repositories base-package="com.sandbox.chapter11.remote.repositories"
+    <jpa:repositories base-package="com.sandbox.chapter12.remote.repositories"
                       entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
 </beans>
