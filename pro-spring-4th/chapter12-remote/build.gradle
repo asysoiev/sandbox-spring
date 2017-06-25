@@ -19,10 +19,6 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.8.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.8.RELEASE'
 
-    compile group: 'org.springframework.boot', name: 'spring-boot', version: '1.5.3.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure', version: '1.5.3.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '1.5.3.RELEASE'
-
     compile group: 'org.aspectj', name: 'aspectjtools', version: '1.7.0'
     compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.7.0'
 }
