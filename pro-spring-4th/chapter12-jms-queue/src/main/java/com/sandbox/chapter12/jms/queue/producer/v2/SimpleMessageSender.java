@@ -1,5 +1,6 @@
-package com.sandbox.chapter12.jms.queue.producer;
+package com.sandbox.chapter12.jms.queue.producer.v2;
 
+import com.sandbox.chapter12.jms.queue.producer.MessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -20,6 +21,7 @@ public class SimpleMessageSender implements MessageSender {
 
     @Override
     public void sendMessage(String message) {
+        jmsTemplate.setDeliveryDelay(5000);
         jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
