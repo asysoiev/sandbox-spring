@@ -1,11 +1,11 @@
 <mapping>
-    <class name="com.sandbox.chapter12.restfull.model.Contacts">
-        <field name="contacts" type="com.sandbox.chapter12.restfull.model.Contacts" collection="arraylist">
+    <class name="com.sandbox.chapter12.rest.model.Contacts">
+        <field name="contacts" type="com.sandbox.chapter12.rest.model.Contacts" collection="arraylist">
             <bind-xml name="contact"/>
         </field>
     </class>
 
-    <class name="com.sandbox.chapter12.restfull.model.Contact" identity="id">
+    <class name="com.sandbox.chapter12.rest.model.Contact" identity="id">
         <map-to xml="contact"/>
         <field name="id" type="long">
             <bind-xml name="id" node="element"/>
@@ -24,7 +24,7 @@
         </field>
     </class>
 
-    <field-handler name="dateHandler" class="com.sandbox.chapter12.restfull.mapping.DateTimeFieldHandler">
+    <field-handler name="dateHandler" class="com.sandbox.chapter12.rest.mapping.DateTimeFieldHandler">
         <param name="date-format" value="yyyy-MM-dd"/>
     </field-handler>
 </mapping>

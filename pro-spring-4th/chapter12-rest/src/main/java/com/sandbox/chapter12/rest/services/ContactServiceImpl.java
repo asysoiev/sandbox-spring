@@ -1,8 +1,8 @@
-package com.sandbox.chapter12.restfull.services;
+package com.sandbox.chapter12.rest.services;
 
 import com.google.common.collect.Lists;
-import com.sandbox.chapter12.restfull.model.Contact;
-import com.sandbox.chapter12.restfull.repositories.ContactRepository;
+import com.sandbox.chapter12.rest.model.Contact;
+import com.sandbox.chapter12.rest.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;

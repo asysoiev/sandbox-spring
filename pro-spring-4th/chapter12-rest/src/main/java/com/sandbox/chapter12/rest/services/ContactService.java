@@ -1,6 +1,6 @@
-package com.sandbox.chapter12.restfull.services;
+package com.sandbox.chapter12.rest.services;
 
-import com.sandbox.chapter12.restfull.model.Contact;
+import com.sandbox.chapter12.rest.model.Contact;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-package com.sandbox.chapter12.restfull.repositories;
+package com.sandbox.chapter12.rest.repositories;
 
-import com.sandbox.chapter12.restfull.model.Contact;
+import com.sandbox.chapter12.rest.model.Contact;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.sandbox.chapter12.restfull.controller;
+package com.sandbox.chapter12.rest.controller;
 
-import com.sandbox.chapter12.restfull.model.Contact;
-import com.sandbox.chapter12.restfull.model.Contacts;
-import com.sandbox.chapter12.restfull.services.ContactService;
+import com.sandbox.chapter12.rest.model.Contact;
+import com.sandbox.chapter12.rest.model.Contacts;
+import com.sandbox.chapter12.rest.services.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

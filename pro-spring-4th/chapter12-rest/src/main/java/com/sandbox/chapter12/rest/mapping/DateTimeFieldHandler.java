@@ -1,4 +1,4 @@
-package com.sandbox.chapter12.restfull.mapping;
+package com.sandbox.chapter12.rest.mapping;
 
 import org.exolab.castor.mapping.GeneralizedFieldHandler;
 import org.exolab.castor.mapping.ValidityException;

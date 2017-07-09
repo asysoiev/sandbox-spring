@@ -1,4 +1,4 @@
-package com.sandbox.chapter12.restfull.model;
+package com.sandbox.chapter12.rest.model;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
