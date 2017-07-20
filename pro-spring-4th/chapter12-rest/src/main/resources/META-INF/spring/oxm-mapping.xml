@@ -1,6 +1,6 @@
 <mapping>
     <class name="com.sandbox.chapter12.rest.model.Contacts">
-        <field name="contacts" type="com.sandbox.chapter12.rest.model.Contacts" collection="arraylist">
+        <field name="contacts" type="com.sandbox.chapter12.rest.model.Contact" collection="arraylist">
             <bind-xml name="contact"/>
         </field>
     </class>
