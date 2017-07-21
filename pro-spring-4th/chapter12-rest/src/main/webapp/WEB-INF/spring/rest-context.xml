@@ -11,6 +11,7 @@
  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <import resource="classpath:/META-INF/spring/datasource-tx-jpa.xml"/>
+    <import resource="classpath:/META-INF/spring/web-security.xml"/>
 
     <mvc:annotation-driven>
         <mvc:message-converters>
