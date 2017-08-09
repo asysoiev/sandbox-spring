@@ -7,7 +7,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '21.0'
     compile group: 'com.h2database', name: 'h2', version: '1.4.194'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
-    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+//    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
     compile group: 'org.jadira.usertype', name: 'usertype.extended', version: '5.0.0.GA'
     compile group: 'joda-time', name: 'joda-time', version: '2.9.9'
     compile group: 'org.springframework', name: 'spring-remoting', version: '2.0.8'
@@ -24,4 +24,7 @@ dependencies {
     compile group: 'org.springframework.security', name: 'spring-security-web', version: '4.2.3.RELEASE'
     compile group: 'org.springframework.security', name: 'spring-security-config', version: '4.2.3.RELEASE'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.3'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.4.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.4.RELEASE'
 }

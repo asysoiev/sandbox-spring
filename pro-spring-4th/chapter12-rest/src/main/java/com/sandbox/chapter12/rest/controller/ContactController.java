@@ -6,14 +6,13 @@ import com.sandbox.chapter12.rest.services.ContactService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by andrii on 08.07.17.
  */
-@Controller
-@RequestMapping(value = "/contact")
+@RestController
+@RequestMapping(value = "/restful/contact")
 public class ContactController {
 
     final Logger logger = LoggerFactory.getLogger(ContactController.class);
@@ -21,19 +20,16 @@ public class ContactController {
     private ContactService contactService;
 
     @RequestMapping(value = "/listdata", method = RequestMethod.GET)
-    @ResponseBody
     public Contacts listData() {
         return new Contacts(contactService.findAll());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseBody
     public Contact findContactById(@PathVariable Long id) {
         return contactService.findById(id);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    @ResponseBody
     public Contact create(@RequestBody Contact contact) {
         logger.info("Creating contact: " + contact);
         contactService.save(contact);
@@ -42,7 +38,6 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    @ResponseBody
     public void update(@RequestBody Contact contact,
                        @PathVariable Long id) {
         logger.info("Updating contact: " + contact);
@@ -51,7 +46,6 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @ResponseBody
     public void delete(@PathVariable Long id) {
         logger.info("Deleting contact with id: " + id);
         Contact contact = contactService.findById(id);
