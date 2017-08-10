@@ -12,10 +12,13 @@
     <bean id="connectionFactory"
           class="org.apache.activemq.ActiveMQConnectionFactory"
           p:brokerURL="tcp://localhost:61616"/>
+
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <constructor-arg name="connectionFactory" ref="connectionFactory"/>
         <property name="defaultDestinationName" value="prospring4"/>
+        <property name="pubSubDomain" value="true"/>
     </bean>
+
     <context:component-scan base-package="com.sandbox.chapter12.jms.queue.producer.v1"/>
 
 </beans>

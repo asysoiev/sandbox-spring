@@ -14,14 +14,23 @@ import javax.jms.TextMessage;
 public class SimpleMessageListener implements MessageListener {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleMessageListener.class);
+    private String prefix = "Received message:";
 
     @Override
     public void onMessage(Message message) {
         TextMessage textMessage = (TextMessage) message;
         try {
-            logger.info("Received message: " + textMessage.getText());
+            logger.info(prefix + " " + textMessage.getText());
         } catch (JMSException e) {
             logger.info("Error: " + e.getMessage());
         }
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 }

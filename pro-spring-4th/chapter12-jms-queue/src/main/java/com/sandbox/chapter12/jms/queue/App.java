@@ -10,11 +10,12 @@ public class App {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.getEnvironment().setActiveProfiles("hornetq");
+//        ctx.getEnvironment().setActiveProfiles("hornetq");
+        ctx.getEnvironment().setActiveProfiles("activemq");
         ctx.load("classpath:META-INF/spring/*app-context.xml");
         ctx.refresh();
         MessageSender messageSender = ctx.getBean("messageSender", MessageSender.class);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3; i++) {
             messageSender.sendMessage("Test message: " + i);
         }
     }
