@@ -11,10 +11,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "contact_tel_detail")
 public class ContactTelDetail implements Serializable {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID")
     private Long id;
+    @Version
+    @Column(name = "VERSION")
     private int version;
+    @Column(name = "TEL_TYPE")
     private String telType;
+    @Column(name = "TEL_NUMBER")
     private String telNumber;
+    @ManyToOne
+    @JoinColumn(name = "CONTACT_ID")
     private Contact contact;
 
     public ContactTelDetail() {
@@ -25,9 +34,6 @@ public class ContactTelDetail implements Serializable {
         this.telNumber = telNumber;
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "ID")
     public Long getId() {
         return this.id;
     }
@@ -36,8 +42,6 @@ public class ContactTelDetail implements Serializable {
         this.id = id;
     }
 
-    @Version
-    @Column(name = "VERSION")
     public int getVersion() {
         return this.version;
     }
@@ -46,7 +50,6 @@ public class ContactTelDetail implements Serializable {
         this.version = version;
     }
 
-    @Column(name = "TEL_TYPE")
     public String getTelType() {
         return this.telType;
     }
@@ -55,7 +58,6 @@ public class ContactTelDetail implements Serializable {
         this.telType = telType;
     }
 
-    @Column(name = "TEL_NUMBER")
     public String getTelNumber() {
         return this.telNumber;
     }
@@ -64,8 +66,6 @@ public class ContactTelDetail implements Serializable {
         this.telNumber = telNumber;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "CONTACT_ID")
     public Contact getContact() {
         return contact;
     }

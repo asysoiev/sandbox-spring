@@ -30,17 +30,30 @@ import static javax.persistence.GenerationType.IDENTITY;
 })
 @SqlResultSetMapping(name = "contactResult", entities = @EntityResult(entityClass = Contact.class))
 public class Contact implements Serializable {
-    private Long id;
-    private int version;
-    private String firstName;
-    private String lastName;
-    private Date birthDate;
-    private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();
-    private Set<Hobby> hobbies = new HashSet<Hobby>();
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
+    private Long id;
+    @Version
+    @Column(name = "VERSION")
+    private int version;
+    @Column(name = "FIRST_NAME")
+    private String firstName;
+    @Column(name = "LAST_NAME")
+    private String lastName;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "BIRTH_DATE")
+    private Date birthDate;
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();
+    @ManyToMany
+    @JoinTable(name = "contact_hobby_detail",
+            joinColumns = @JoinColumn(name = "CONTACT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "HOBBY_ID"))
+    private Set<Hobby> hobbies = new HashSet<Hobby>();
+
     public Long getId() {
         return this.id;
     }
@@ -49,8 +62,6 @@ public class Contact implements Serializable {
         this.id = id;
     }
 
-    @Version
-    @Column(name = "VERSION")
     public int getVersion() {
         return this.version;
     }
@@ -59,7 +70,6 @@ public class Contact implements Serializable {
         this.version = version;
     }
 
-    @Column(name = "FIRST_NAME")
     public String getFirstName() {
         return this.firstName;
     }
@@ -68,7 +78,6 @@ public class Contact implements Serializable {
         this.firstName = firstName;
     }
 
-    @Column(name = "LAST_NAME")
     public String getLastName() {
         return this.lastName;
     }
@@ -77,8 +86,6 @@ public class Contact implements Serializable {
         this.lastName = lastName;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "BIRTH_DATE")
     public Date getBirthDate() {
         return this.birthDate;
     }
@@ -87,8 +94,6 @@ public class Contact implements Serializable {
         this.birthDate = birthDate;
     }
 
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL,
-            orphanRemoval = true)
     public Set<ContactTelDetail> getContactTelDetails() {
         return this.contactTelDetails;
     }
@@ -106,10 +111,6 @@ public class Contact implements Serializable {
         getContactTelDetails().remove(contactTelDetail);
     }
 
-    @ManyToMany
-    @JoinTable(name = "contact_hobby_detail",
-            joinColumns = @JoinColumn(name = "CONTACT_ID"),
-            inverseJoinColumns = @JoinColumn(name = "HOBBY_ID"))
     public Set<Hobby> getHobbies() {
         return this.hobbies;
     }
