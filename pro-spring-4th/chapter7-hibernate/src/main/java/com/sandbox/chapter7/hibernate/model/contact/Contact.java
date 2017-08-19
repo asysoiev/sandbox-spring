@@ -1,5 +1,7 @@
 package com.sandbox.chapter7.hibernate.model.contact;
 
+import org.hibernate.annotations.LazyCollection;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static org.hibernate.annotations.LazyCollectionOption.FALSE;
 
 /**
  * Created by andrii on 22.04.17.
@@ -45,6 +48,8 @@ public class Contact implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
+    //    @LazyCollection(TRUE)//default value
+    @LazyCollection(FALSE)
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL,
             orphanRemoval = true)
     private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();

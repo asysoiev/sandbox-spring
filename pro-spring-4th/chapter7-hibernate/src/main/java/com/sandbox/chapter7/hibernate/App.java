@@ -37,6 +37,16 @@ public class App {
         contactDao.save(newContact);
         listContacts(contactDao.findAllWithDetail());
 
+        System.out.println("LAZY LOADING");
+        List<Contact> all = contactDao.findAll();
+        Contact contact1 = all.get(0);
+        System.out.println("LAZY LOADING 1");
+        Set<ContactTelDetail> contactTelDetails = contact1.getContactTelDetails();
+        for (ContactTelDetail telDetail : contactTelDetails) {
+            System.out.println("telDetail: " + telDetail);
+        }
+        System.out.println("LAZY LOADING");
+
         System.out.println("");
         System.out.println("Delete contact: " + newContact);
         contactDao.delete(newContact);
