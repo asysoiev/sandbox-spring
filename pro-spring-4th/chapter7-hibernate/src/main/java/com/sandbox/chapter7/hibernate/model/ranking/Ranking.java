@@ -3,8 +3,6 @@ package com.sandbox.chapter7.hibernate.model.ranking;
 import javax.persistence.*;
 import java.io.Serializable;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 /**
  * Created by andrii on 18.08.17.
  */
@@ -35,14 +33,14 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Ranking implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Long id;
     @ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Person subject;
+    @Id
     @ManyToOne
     @JoinColumn(name = "OBSERVER_ID")
     private Person observer;
+    @Id
     @ManyToOne
     @JoinColumn(name = "SKILL")
     private Skill skill;
@@ -50,14 +48,6 @@ public class Ranking implements Serializable {
     private Integer ranking;
 
     public Ranking() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Person getSubject() {
@@ -95,7 +85,6 @@ public class Ranking implements Serializable {
     @Override
     public String toString() {
         return "Ranking{" +
-                "id=" + id +
                 ", subject=" + subject +
                 ", observer=" + observer +
                 ", skill=" + skill +
