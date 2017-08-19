@@ -2,6 +2,7 @@ package com.sandbox.chapter7.hibernate.model.ranking;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by andrii on 18.08.17.
@@ -14,6 +15,7 @@ import java.io.Serializable;
         @NamedQuery(name = "Person.findByName",
                 query = "select p " +
                         "from Person p " +
+                        "left join fetch p.ranks r " +
                         "where p.name=:name"),
 })
 public class Person implements Serializable {
@@ -25,6 +27,9 @@ public class Person implements Serializable {
     private String name;
     @Column
     private String surname;
+    @OneToMany
+    @JoinColumn(name = "SUBJECT_ID")
+    private Set<Ranking> ranks;
 
     public Person() {
     }
@@ -56,6 +61,14 @@ public class Person implements Serializable {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public Set<Ranking> getRanks() {
+        return ranks;
+    }
+
+    public void setRanks(Set<Ranking> ranks) {
+        this.ranks = ranks;
     }
 
     @Override

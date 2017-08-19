@@ -1,5 +1,6 @@
 package com.sandbox.chapter7.hibernate;
 
+import com.sandbox.chapter7.hibernate.dao.ranking.PersonDao;
 import com.sandbox.chapter7.hibernate.dao.ranking.SkillDao;
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
@@ -9,6 +10,7 @@ import com.sandbox.chapter7.hibernate.service.RankingService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by andrii on 19.08.17.
@@ -24,6 +26,7 @@ public class RankingApp {
 
         RankingService rankingService = ctx.getBean(RankingService.class);
         PersonService personService = ctx.getBean(PersonService.class);
+        PersonDao personDao = ctx.getBean(PersonDao.class);
         SkillDao skillDao = ctx.getBean(SkillDao.class);
 
         //prepare data
@@ -47,7 +50,7 @@ public class RankingApp {
         int averageRanking = rankingService.getAverageRanking(subject.getName(), skillJava.getName());
         System.out.println("Average ranking: " + averageRanking);
         Ranking retrievedRanking = rankingService.findRankingBySubjectAndObserverAndSkill(subject.getName(), observer.getName(), skillJava.getName());
-        System.out.println("Retrieve ranking: " + retrievedRanking);
+        System.out.println("Retrieved ranking: " + retrievedRanking);
         System.out.println("=======================");
 
         System.out.println("=======================");
@@ -81,6 +84,16 @@ public class RankingApp {
         Person lockedPerson = personService.loadById(subject.getId());
         lockedPerson.setSurname("Updated");
         personService.savePerson(lockedPerson);
+        System.out.println("=======================");
+
+        System.out.println("=======================");
+        System.out.println("Associations and lazy loading");
+        Person andrii = personDao.findByName("Andrii");
+        System.out.println("Person: " + andrii);
+        Set<Ranking> ranks = andrii.getRanks();
+        for (Ranking rank : ranks) {
+            System.out.println("Rank: " + rank);
+        }
         System.out.println("=======================");
     }
 
