@@ -1,5 +1,9 @@
 package com.sandbox.chapter7.hibernate.model;
 
+import com.sandbox.chapter7.hibernate.model.contact.Contact;
+import com.sandbox.chapter7.hibernate.model.contact.ContactTelDetail;
+import com.sandbox.chapter7.hibernate.model.contact.Hobby;
+
 import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;

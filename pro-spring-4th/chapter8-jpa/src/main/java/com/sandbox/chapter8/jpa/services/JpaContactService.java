@@ -1,9 +1,9 @@
 package com.sandbox.chapter8.jpa.services;
 
 import com.google.common.collect.Lists;
-import com.sandbox.chapter7.hibernate.model.Contact;
+import com.sandbox.chapter7.hibernate.dao.contact.ContactDao;
 import com.sandbox.chapter7.hibernate.model.Contact_;
-import com.sandbox.chapter7.hibernate.service.ContactDao;
+import com.sandbox.chapter7.hibernate.model.contact.Contact;
 import com.sandbox.chapter8.jpa.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

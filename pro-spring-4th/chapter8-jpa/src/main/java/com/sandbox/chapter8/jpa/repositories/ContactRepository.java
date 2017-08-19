@@ -1,6 +1,6 @@
 package com.sandbox.chapter8.jpa.repositories;
 
-import com.sandbox.chapter7.hibernate.model.Contact;
+import com.sandbox.chapter7.hibernate.model.contact.Contact;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.sandbox.chapter7.hibernate.service;
+package com.sandbox.chapter7.hibernate.dao.contact;
 
-import com.sandbox.chapter7.hibernate.model.Contact;
+import com.sandbox.chapter7.hibernate.model.contact.Contact;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.sandbox.chapter7.hibernate.model;
+package com.sandbox.chapter7.hibernate.model.contact;
 
 import javax.persistence.*;
 import java.io.Serializable;

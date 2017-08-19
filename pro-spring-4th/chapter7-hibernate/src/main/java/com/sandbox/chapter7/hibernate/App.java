@@ -1,9 +1,9 @@
 package com.sandbox.chapter7.hibernate;
 
-import com.sandbox.chapter7.hibernate.model.Contact;
-import com.sandbox.chapter7.hibernate.model.ContactTelDetail;
-import com.sandbox.chapter7.hibernate.model.Hobby;
-import com.sandbox.chapter7.hibernate.service.ContactDao;
+import com.sandbox.chapter7.hibernate.dao.contact.ContactDao;
+import com.sandbox.chapter7.hibernate.model.contact.Contact;
+import com.sandbox.chapter7.hibernate.model.contact.ContactTelDetail;
+import com.sandbox.chapter7.hibernate.model.contact.Hobby;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import java.util.Date;
