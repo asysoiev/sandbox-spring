@@ -46,7 +46,7 @@ public class RankingServiceImpl implements RankingService {
     @Override
     public Ranking findRankingBySubjectAndObserverAndSkill(String subject,
                                                            String observer, String skill) {
-        return rankingDao.findRankingBySubjectAndObserverAndSkill(subject, observer, skill);
+        return rankingDao.findBySubjectAndObserverAndSkill(subject, observer, skill);
     }
 
     @Override

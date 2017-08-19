@@ -12,8 +12,8 @@ public interface RankingDao {
 
     void saveRanking(Ranking ranking);
 
-    Ranking findRankingBySubjectAndObserverAndSkill(String subject,
-                                                    String observer, String skill);
+    Ranking findBySubjectAndObserverAndSkill(String subject,
+                                             String observer, String skill);
 
     void delete(Ranking value);
 

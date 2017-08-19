@@ -7,6 +7,15 @@ import java.io.Serializable;
  * Created by andrii on 18.08.17.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Person.findAll",
+                query = "select p " +
+                        "from Person p "),
+        @NamedQuery(name = "Person.findByName",
+                query = "select p " +
+                        "from Person p " +
+                        "where p.name=:name"),
+})
 public class Person implements Serializable {
 
     @Id

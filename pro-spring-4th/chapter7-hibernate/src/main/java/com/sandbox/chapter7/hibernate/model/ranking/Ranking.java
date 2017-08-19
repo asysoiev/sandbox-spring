@@ -9,6 +9,29 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by andrii on 18.08.17.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Ranking.findAll",
+                query = "select r " +
+                        "from Ranking r "),
+        @NamedQuery(name = "Ranking.findBySubjectAndObserverAndSkill",
+                query = "select r " +
+                        "from Ranking r " +
+                        "where " +
+                        "r.subject.name=:subject and " +
+                        "r.observer.name=:observer and " +
+                        "r.skill.name=:skill"),
+        @NamedQuery(name = "Ranking.findBySubjectAndSkill",
+                query = "select r " +
+                        "from Ranking r " +
+                        "where " +
+                        "r.subject.name=:subject and " +
+                        "r.skill.name=:skill"),
+        @NamedQuery(name = "Ranking.findBySubject",
+                query = "select r " +
+                        "from Ranking r " +
+                        "where " +
+                        "r.subject.name=:subject"),
+})
 public class Ranking implements Serializable {
 
     @Id

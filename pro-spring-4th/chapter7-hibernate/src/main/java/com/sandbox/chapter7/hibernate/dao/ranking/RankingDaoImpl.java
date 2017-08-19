@@ -19,12 +19,11 @@ public class RankingDaoImpl implements RankingDao {
     @Resource
     private SessionFactory sessionFactory;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Ranking> getRankingBySubjectAndSkill(String subject, String skill) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Ranking r "
-                + "where r.subject.name=:name "
-                + "and r.skill.name=:skill");
-        query.setParameter("name", subject);
+        Query query = sessionFactory.getCurrentSession().createNamedQuery("Ranking.findBySubjectAndSkill");
+        query.setParameter("subject", subject);
         query.setParameter("skill", skill);
         return query.getResultList();
     }
@@ -36,12 +35,9 @@ public class RankingDaoImpl implements RankingDao {
 
     @Transactional(readOnly = true)
     @Override
-    public Ranking findRankingBySubjectAndObserverAndSkill(String subject,
-                                                           String observer, String skill) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Ranking r where "
-                + "r.subject.name=:subject and "
-                + "r.observer.name=:observer and "
-                + "r.skill.name=:skill");
+    public Ranking findBySubjectAndObserverAndSkill(String subject,
+                                                    String observer, String skill) {
+        Query query = sessionFactory.getCurrentSession().createNamedQuery("Ranking.findBySubjectAndObserverAndSkill");
         query.setParameter("subject", subject);
         query.setParameter("observer", observer);
         query.setParameter("skill", skill);
@@ -57,12 +53,12 @@ public class RankingDaoImpl implements RankingDao {
     @Transactional(readOnly = true)
     @Override
     public List<Ranking> getRankingsBySubject(String subject) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Ranking r where "
-                + "r.subject.name=:subject order by r.skill.name");
+        Query query = sessionFactory.getCurrentSession().createNamedQuery("Ranking.findBySubject");
         query.setParameter("subject", subject);
         return query.getResultList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Object[]> findBestPersonFor(String skill) {
         Query query = sessionFactory.getCurrentSession().createQuery("select r.subject.name, avg(r.ranking) as average"

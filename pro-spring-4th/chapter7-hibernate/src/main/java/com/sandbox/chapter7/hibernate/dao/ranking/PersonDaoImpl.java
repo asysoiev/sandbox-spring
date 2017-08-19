@@ -28,7 +28,7 @@ public class PersonDaoImpl implements PersonDao {
     @Transactional(readOnly = true)
     @Override
     public Person findByName(String name) {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Person p where p.name=:name");
+        Query query = sessionFactory.getCurrentSession().createNamedQuery("Person.findByName");
         query.setParameter("name", name);
         Person result = (Person) query.getSingleResult();
         return result;
