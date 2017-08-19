@@ -33,15 +33,15 @@ import java.io.Serializable;
 public class Ranking implements Serializable {
 
     @Id
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Person subject;
     @Id
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "OBSERVER_ID")
     private Person observer;
     @Id
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "SKILL")
     private Skill skill;
     @Column(name = "RANK")

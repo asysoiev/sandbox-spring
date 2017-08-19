@@ -32,6 +32,7 @@ public class App {
                 new ContactTelDetail("Home", "1111111111");
         newContact.addContactTelDetail(contactTelDetail);
         contactTelDetail = new ContactTelDetail("Mobile", "2222222222");
+//        contactTelDetail.setContact(newContact);//mappedBy magic
         newContact.addContactTelDetail(contactTelDetail);
         contactDao.save(newContact);
         listContacts(contactDao.findAllWithDetail());
