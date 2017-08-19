@@ -10,4 +10,8 @@ public interface PersonDao {
     Person addPerson(String personName, String surname);
 
     Person findByName(String name);
+
+    void save(Person person);
+
+    Person loadById(Long id);
 }

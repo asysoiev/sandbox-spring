@@ -1,6 +1,7 @@
 package com.sandbox.chapter7.hibernate.dao.ranking;
 
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
+import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
@@ -32,5 +33,15 @@ public class PersonDaoImpl implements PersonDao {
         query.setParameter("name", name);
         Person result = (Person) query.getSingleResult();
         return result;
+    }
+
+    @Override
+    public void save(Person person) {
+        sessionFactory.getCurrentSession().saveOrUpdate(person);
+    }
+
+    @Override
+    public Person loadById(Long id) {
+        return sessionFactory.getCurrentSession().load(Person.class, id, LockMode.PESSIMISTIC_WRITE);
     }
 }

@@ -1,10 +1,10 @@
 package com.sandbox.chapter7.hibernate;
 
-import com.sandbox.chapter7.hibernate.dao.ranking.PersonDao;
 import com.sandbox.chapter7.hibernate.dao.ranking.SkillDao;
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
 import com.sandbox.chapter7.hibernate.model.ranking.Skill;
+import com.sandbox.chapter7.hibernate.service.PersonService;
 import com.sandbox.chapter7.hibernate.service.RankingService;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
@@ -23,12 +23,12 @@ public class RankingApp {
 
 
         RankingService rankingService = ctx.getBean(RankingService.class);
-        PersonDao personDao = ctx.getBean(PersonDao.class);
+        PersonService personService = ctx.getBean(PersonService.class);
         SkillDao skillDao = ctx.getBean(SkillDao.class);
 
         //prepare data
-        Person subject = personDao.addPerson("Andrii", "Sysoiev");
-        Person observer = personDao.addPerson("Irina", "Kovalenko");
+        Person subject = personService.addPerson("Andrii", "Sysoiev");
+        Person observer = personService.addPerson("Irina", "Kovalenko");
         Skill skillJava = skillDao.addSkill("Java");
         Skill skillHibernate = skillDao.addSkill("Hibernate");
         Skill skillSpring = skillDao.addSkill("Spring");
@@ -74,6 +74,13 @@ public class RankingApp {
         System.out.println("Get best person for skill");
         Person bestPersonForSpring = rankingService.findBestPersonFor(skillSpring.getName());
         System.out.println("Best person for Spring is " + bestPersonForSpring.getName());
+        System.out.println("=======================");
+
+        System.out.println("=======================");
+        System.out.println("Locks");
+        Person lockedPerson = personService.loadById(subject.getId());
+        lockedPerson.setSurname("Updated");
+        personService.savePerson(lockedPerson);
         System.out.println("=======================");
     }
 
