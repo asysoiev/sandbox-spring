@@ -4,6 +4,7 @@ import com.sandbox.chapter7.hibernate.dao.ranking.PersonDao;
 import com.sandbox.chapter7.hibernate.dao.ranking.SkillDao;
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
+import com.sandbox.chapter7.hibernate.model.ranking.RankingId;
 import com.sandbox.chapter7.hibernate.model.ranking.Skill;
 import com.sandbox.chapter7.hibernate.service.PersonService;
 import com.sandbox.chapter7.hibernate.service.RankingService;
@@ -94,6 +95,13 @@ public class RankingApp {
         for (Ranking rank : ranks) {
             System.out.println("Rank: " + rank);
         }
+        System.out.println("=======================");
+
+        System.out.println("=======================");
+        System.out.println("IdClass");
+        RankingId rankingId = new RankingId(subject, observer, skillSpring);
+        Ranking rankingById = rankingService.findRankingById(rankingId);
+        System.out.println("Ranking by id: " + rankingById);
         System.out.println("=======================");
     }
 

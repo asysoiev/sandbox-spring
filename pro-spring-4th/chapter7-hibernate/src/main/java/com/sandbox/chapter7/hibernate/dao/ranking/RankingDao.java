@@ -1,6 +1,7 @@
 package com.sandbox.chapter7.hibernate.dao.ranking;
 
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
+import com.sandbox.chapter7.hibernate.model.ranking.RankingId;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface RankingDao {
     List<Ranking> getRankingsBySubject(String subject);
 
     List<Object[]> findBestPersonFor(String skill);
+
+    Ranking findRankingById(RankingId rankingId);
 }

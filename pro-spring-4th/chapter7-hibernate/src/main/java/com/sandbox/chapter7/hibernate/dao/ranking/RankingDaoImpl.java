@@ -1,6 +1,7 @@
 package com.sandbox.chapter7.hibernate.dao.ranking;
 
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
+import com.sandbox.chapter7.hibernate.model.ranking.RankingId;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,5 +70,11 @@ public class RankingDaoImpl implements RankingDao {
         query.setParameter("skill", skill);
         List<Object[]> result = query.getResultList();
         return result;
+    }
+
+    @Override
+    public Ranking findRankingById(RankingId rankingId) {
+//        return sessionFactory.getCurrentSession().load(Ranking.class, rankingId);//lazy initialization exception
+        return sessionFactory.getCurrentSession().get(Ranking.class, rankingId);
     }
 }

@@ -4,6 +4,7 @@ import com.sandbox.chapter7.hibernate.dao.ranking.PersonDao;
 import com.sandbox.chapter7.hibernate.dao.ranking.RankingDao;
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
+import com.sandbox.chapter7.hibernate.model.ranking.RankingId;
 import com.sandbox.chapter7.hibernate.model.ranking.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,5 +87,10 @@ public class RankingServiceImpl implements RankingService {
             return personDao.findByName((String) result.get(0)[0]);
         }
         return null;
+    }
+
+    @Override
+    public Ranking findRankingById(RankingId rankingId) {
+        return rankingDao.findRankingById(rankingId);
     }
 }

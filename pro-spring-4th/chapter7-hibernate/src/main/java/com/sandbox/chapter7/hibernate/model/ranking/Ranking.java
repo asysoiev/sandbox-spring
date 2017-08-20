@@ -30,18 +30,19 @@ import java.io.Serializable;
                         "where " +
                         "r.subject.name=:subject"),
 })
+@IdClass(RankingId.class)
 public class Ranking implements Serializable {
 
     @Id
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "SUBJECT_ID")
     private Person subject;
     @Id
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "OBSERVER_ID")
     private Person observer;
     @Id
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "SKILL")
     private Skill skill;
     @Column(name = "RANK")

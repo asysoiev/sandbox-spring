@@ -2,6 +2,7 @@ package com.sandbox.chapter7.hibernate.service;
 
 import com.sandbox.chapter7.hibernate.model.ranking.Person;
 import com.sandbox.chapter7.hibernate.model.ranking.Ranking;
+import com.sandbox.chapter7.hibernate.model.ranking.RankingId;
 import com.sandbox.chapter7.hibernate.model.ranking.Skill;
 
 import java.util.Map;
@@ -25,4 +26,6 @@ public interface RankingService {
     Map<String, Integer> findRankingsFor(String subject);
 
     Person findBestPersonFor(String skill);
+
+    Ranking findRankingById(RankingId rankingId);
 }
