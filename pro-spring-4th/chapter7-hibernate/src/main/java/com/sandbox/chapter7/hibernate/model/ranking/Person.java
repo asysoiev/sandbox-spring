@@ -8,6 +8,7 @@ import java.util.Set;
  * Created by andrii on 18.08.17.
  */
 @Entity
+@Table(name = "PERSON")
 @NamedQueries({
         @NamedQuery(name = "Person.findAll",
                 query = "select p " +
@@ -24,6 +25,7 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
+    @Basic(optional = false)//not null
     private String name;
     @Column
     private String surname;
