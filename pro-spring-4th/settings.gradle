@@ -38,4 +38,5 @@ include 'chapter11-schedule'
 include 'chapter12-remote'
 include 'chapter12-jms-queue'
 include 'chapter12-rest'
+include 'concurrency'
 
