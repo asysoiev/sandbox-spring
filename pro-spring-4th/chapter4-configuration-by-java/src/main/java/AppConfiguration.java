@@ -3,17 +3,26 @@ import com.sandbox.spring.chapter3.dependency.services.MessageRenderer;
 import com.sandbox.spring.chapter3.dependency.services.StandardMessageOutRenderer;
 import model.PropertyMessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 
 /**
  * @author Andrii Sysoiev
  */
 @Configuration
-@PropertySource("classpath:props.properties")
+@PropertySources({
+        @PropertySource("classpath:config.properties"),
+        @PropertySource("classpath:props.properties"),
+        @PropertySource("classpath:config.yaml"),
+})
+@EnableConfigurationProperties
+@ComponentScan(value = "config")
 public class AppConfiguration {
 
     @Autowired
